@@ -13,5 +13,44 @@
   		<artifactId>helloworldmvc.contract</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>fr.exia</groupId>
+  		<artifactId>helloworldmvc.controller</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>fr.exia</groupId>
+  		<artifactId>helloworldmvc.model</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>fr.exia</groupId>
+  		<artifactId>helloworldmvc.view</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
+<build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.1.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+	            <transformers>
+	            	<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+	            		<mainClass>helloworldmvc.main.HelloWorld</mainClass>
+	            	</transformer>
+	            </transformers>
+            </configuration>
+            </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
